@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 export default class Autores extends Component {
+  constructor () {
+    super();
+    this.state = {lista:[
+      {id:1, nome:"a", email: "b", password:"c"},
+      {id:2, nome:"aa", email: "bb", password:"cc"}
+    ]};
+    //https://projeto-node-api.herokuapp.com/autores
+  }
+
   render() {
     return (
       <div className="card">
@@ -58,30 +67,22 @@ export default class Autores extends Component {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {
+                    this.state.lista.map(autor => {
+                      return (
+                        <tr>
+                          <th>{autor.id}</th>
+                          <td>{autor.nome}</td>
+                          <td>{autor.email}</td>
+                        </tr>
+                      )
+                    })
+                  }
                 </tbody>
               </table>
             </div>
